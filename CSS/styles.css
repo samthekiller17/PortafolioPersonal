@@ -1,4 +1,4 @@
-/* ===== Variables: tema oscuro por defecto ===== */
+
 :root {
     --fondo: #0b0d14;
     --superficie: #151824;
@@ -14,7 +14,7 @@
     --transicion: 0.25s ease;
 }
 
-/* Tema claro: se activa con <html data-theme="light"> (útil para un botón con JS más adelante) */
+
 :root[data-theme="light"] {
     --fondo: #f6f7fb;
     --superficie: #ffffff;
@@ -27,7 +27,7 @@
     --brillo: rgba(106, 74, 255, 0.25);
 }
 
-/* ===== Base ===== */
+
 *,
 *::before,
 *::after {
@@ -71,7 +71,7 @@ a:hover {
     color: #fff;
 }
 
-/* Texto solo para lectores de pantalla (para el h2 "Menu") */
+
 .sr-only {
     position: absolute;
     width: 1px;
@@ -84,7 +84,7 @@ a:hover {
     border: 0;
 }
 
-/* ===== Header ===== */
+
 header {
     text-align: center;
     padding: 4rem 1.5rem 2.5rem;
@@ -94,7 +94,7 @@ header h1 {
     margin: 0 0 2rem;
     font-size: clamp(1.5rem, 4vw, 2.2rem);
     letter-spacing: 0.35em;
-    /* Texto con degradado */
+
     background: linear-gradient(90deg, var(--acento), var(--acento-2));
     -webkit-background-clip: text;
     background-clip: text;
@@ -121,7 +121,7 @@ header p {
     color: var(--texto-suave);
 }
 
-/* ===== Navegación (header y footer) ===== */
+
 nav {
     margin-top: 2rem;
 }
@@ -156,7 +156,7 @@ nav a:hover {
     box-shadow: 0 8px 20px -6px var(--brillo);
 }
 
-/* ===== Contenido principal ===== */
+
 main {
     max-width: 1100px;
     margin: 0 auto;
@@ -175,7 +175,7 @@ section > h2 {
     font-size: clamp(1.5rem, 4vw, 2rem);
 }
 
-/* Línea decorativa corta con degradado bajo cada título */
+
 section > h2::after {
     content: "";
     position: absolute;
@@ -191,7 +191,7 @@ section > p {
     color: var(--texto-suave);
 }
 
-/* ===== Proyectos ===== */
+
 .proyectos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -218,11 +218,11 @@ section > p {
 
 .proyecto-card img {
     width: 100%;
-    aspect-ratio: 16 / 9; /* todas las imágenes con la misma proporción */
+    aspect-ratio: 16 / 9; 
     object-fit: cover;
     border-radius: 10px;
-    background-color: var(--superficie-2); /* se ve algo si la imagen aún no carga */
-}
+    background-color: var(--superficie-2);
+} 
 
 .proyecto-card h3 {
     margin: 1.1rem 0 0.5rem;
@@ -235,10 +235,10 @@ section > p {
     font-size: 0.97rem;
 }
 
-/* Etiqueta tipo "pill" para el lenguaje */
+
 .proyecto-card .proyecto-lenguaje {
     align-self: flex-start;
-    margin: auto 0 1.1rem; /* auto arriba: empuja lenguaje y botón al fondo */
+    margin: auto 0 1.1rem; 
     padding: 0.25rem 0.8rem;
     border: 1px solid var(--borde);
     border-radius: 999px;
@@ -272,7 +272,7 @@ section > p {
     transform: translateY(0);
 }
 
-/* ===== Sobre mí ===== */
+
 #sobremi ul {
     display: grid;
     gap: 1rem;
@@ -289,7 +289,7 @@ section > p {
     border-radius: 0 var(--radio) var(--radio) 0;
 }
 
-/* ===== Habilidades (details/summary) ===== */
+
 details {
     background-color: var(--superficie);
     border: 1px solid var(--borde);
@@ -309,14 +309,14 @@ details[open] {
 summary {
     cursor: pointer;
     font-weight: 700;
-    list-style: none; /* quita el triángulo por defecto */
+    list-style: none; 
 }
 
 summary::-webkit-details-marker {
-    display: none; /* lo mismo para Safari/Chrome antiguos */
+    display: none; 
 }
 
-/* Flecha propia que gira al abrir */
+
 summary::before {
     content: "▸";
     display: inline-block;
@@ -329,7 +329,7 @@ details[open] summary::before {
     transform: rotate(90deg);
 }
 
-/* Cada habilidad se ve como una "chip" */
+
 details ul {
     display: flex;
     flex-wrap: wrap;
@@ -353,7 +353,7 @@ details li:hover {
     transform: translateY(-2px);
 }
 
-/* ===== Educación ===== */
+
 #edu ol {
     counter-reset: paso;
     list-style: none;
@@ -371,7 +371,7 @@ details li:hover {
     border-radius: var(--radio);
 }
 
-/* Número en círculo a la izquierda de cada ítem */
+
 #edu ol li::before {
     content: counter(paso);
     position: absolute;
@@ -408,7 +408,7 @@ details li:hover {
     color: var(--acento-2);
 }
 
-/* ===== Footer / Contacto ===== */
+
 footer {
     margin-top: 2rem;
     padding: 3rem 1.5rem;
@@ -425,7 +425,7 @@ footer nav {
     margin: 1.5rem 0;
 }
 
-/* ===== Animación de aparición al hacer scroll ===== */
+
 @keyframes aparecer {
     from {
         opacity: 0;
@@ -437,7 +437,7 @@ footer nav {
     }
 }
 
-/* Solo si el navegador la soporta y el usuario no pidió menos movimiento */
+
 @supports (animation-timeline: view()) {
     @media (prefers-reduced-motion: no-preference) {
         main section {
@@ -448,7 +448,7 @@ footer nav {
     }
 }
 
-/* ===== Accesibilidad ===== */
+
 a:focus-visible,
 button:focus-visible,
 summary:focus-visible {
@@ -466,7 +466,7 @@ summary:focus-visible {
     }
 }
 
-/* ===== Pantallas pequeñas ===== */
+
 @media (max-width: 600px) {
     header {
         padding-top: 2.5rem;
