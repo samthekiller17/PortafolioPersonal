@@ -1,0 +1,486 @@
+/* ===== Variables: tema oscuro por defecto ===== */
+:root {
+    --fondo: #0b0d14;
+    --superficie: #151824;
+    --superficie-2: #1d2130;
+    --borde: #2a2f42;
+    --texto: #eceef5;
+    --texto-suave: #a0a6bd;
+    --acento: #7c5cff;
+    --acento-2: #22d3ee;
+    --acento-hover: #a18bff;
+    --brillo: rgba(124, 92, 255, 0.35);
+    --radio: 16px;
+    --transicion: 0.25s ease;
+}
+
+/* Tema claro: se activa con <html data-theme="light"> (útil para un botón con JS más adelante) */
+:root[data-theme="light"] {
+    --fondo: #f6f7fb;
+    --superficie: #ffffff;
+    --superficie-2: #eef0f7;
+    --borde: #dcdfeb;
+    --texto: #1a1d2b;
+    --texto-suave: #5b627a;
+    --acento: #6a4aff;
+    --acento-hover: #4f33d6;
+    --brillo: rgba(106, 74, 255, 0.25);
+}
+
+/* ===== Base ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: var(--texto);
+    background-color: var(--fondo);
+    /* Resplandores de color de fondo, fijos al hacer scroll */
+    background-image:
+        radial-gradient(circle at 15% 0%, var(--brillo), transparent 40%),
+        radial-gradient(circle at 85% 10%, rgba(34, 211, 238, 0.15), transparent 35%);
+    background-attachment: fixed;
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+    text-wrap: balance; /* reparte mejor las líneas de los títulos */
+}
+
+a {
+    color: var(--acento-hover);
+    transition: color var(--transicion);
+}
+
+a:hover {
+    color: var(--acento-2);
+}
+
+::selection {
+    background-color: var(--acento);
+    color: #fff;
+}
+
+/* Texto solo para lectores de pantalla (para el h2 "Menu") */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ===== Header ===== */
+header {
+    text-align: center;
+    padding: 4rem 1.5rem 2.5rem;
+}
+
+header h1 {
+    margin: 0 0 2rem;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    letter-spacing: 0.35em;
+    /* Texto con degradado */
+    background: linear-gradient(90deg, var(--acento), var(--acento-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+header img {
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--acento);
+    box-shadow: 0 0 0 8px var(--brillo), 0 20px 50px -10px var(--brillo);
+}
+
+header h2:first-of-type {
+    margin: 1.5rem 0 0.5rem;
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+}
+
+header p {
+    max-width: 620px;
+    margin: 0.75rem auto;
+    color: var(--texto-suave);
+}
+
+/* ===== Navegación (header y footer) ===== */
+nav {
+    margin-top: 2rem;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    display: inline-block;
+    padding: 0.55rem 1.1rem;
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    background-color: var(--superficie);
+    text-decoration: none;
+    color: var(--texto);
+    transition: transform var(--transicion), background-color var(--transicion),
+        border-color var(--transicion), box-shadow var(--transicion);
+}
+
+nav a:hover {
+    transform: translateY(-2px);
+    background-color: var(--acento);
+    border-color: var(--acento);
+    color: #fff;
+    box-shadow: 0 8px 20px -6px var(--brillo);
+}
+
+/* ===== Contenido principal ===== */
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+section {
+    margin-bottom: 5rem;
+    scroll-margin-top: 1.5rem;
+}
+
+section > h2 {
+    position: relative;
+    margin: 0 0 1.5rem;
+    padding-bottom: 0.75rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+/* Línea decorativa corta con degradado bajo cada título */
+section > h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 70px;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--acento), var(--acento-2));
+}
+
+section > p {
+    color: var(--texto-suave);
+}
+
+/* ===== Proyectos ===== */
+.proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.75rem;
+    margin-top: 2rem;
+}
+
+.proyecto-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.1rem;
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    transition: transform var(--transicion), border-color var(--transicion),
+        box-shadow var(--transicion);
+}
+
+.proyecto-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--acento);
+    box-shadow: 0 20px 40px -15px var(--brillo);
+}
+
+.proyecto-card img {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* todas las imágenes con la misma proporción */
+    object-fit: cover;
+    border-radius: 10px;
+    background-color: var(--superficie-2); /* se ve algo si la imagen aún no carga */
+}
+
+.proyecto-card h3 {
+    margin: 1.1rem 0 0.5rem;
+    font-size: 1.25rem;
+}
+
+.proyecto-card p {
+    margin: 0 0 1rem;
+    color: var(--texto-suave);
+    font-size: 0.97rem;
+}
+
+/* Etiqueta tipo "pill" para el lenguaje */
+.proyecto-card .proyecto-lenguaje {
+    align-self: flex-start;
+    margin: auto 0 1.1rem; /* auto arriba: empuja lenguaje y botón al fondo */
+    padding: 0.25rem 0.8rem;
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    background-color: var(--superficie-2);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--acento-hover);
+}
+
+.proyecto-card button {
+    align-self: flex-start;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 10px;
+    font: inherit;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(90deg, var(--acento), #5b8cff);
+    cursor: pointer;
+    transition: transform var(--transicion), box-shadow var(--transicion),
+        filter var(--transicion);
+}
+
+.proyecto-card button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px -6px var(--brillo);
+    filter: brightness(1.1);
+}
+
+.proyecto-card button:active {
+    transform: translateY(0);
+}
+
+/* ===== Sobre mí ===== */
+#sobremi ul {
+    display: grid;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#sobremi li {
+    padding: 1.1rem 1.4rem;
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-left: 4px solid var(--acento);
+    border-radius: 0 var(--radio) var(--radio) 0;
+}
+
+/* ===== Habilidades (details/summary) ===== */
+details {
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    padding: 1rem 1.4rem;
+    transition: border-color var(--transicion);
+}
+
+details + details {
+    margin-top: 1rem;
+}
+
+details[open] {
+    border-color: var(--acento);
+}
+
+summary {
+    cursor: pointer;
+    font-weight: 700;
+    list-style: none; /* quita el triángulo por defecto */
+}
+
+summary::-webkit-details-marker {
+    display: none; /* lo mismo para Safari/Chrome antiguos */
+}
+
+/* Flecha propia que gira al abrir */
+summary::before {
+    content: "▸";
+    display: inline-block;
+    margin-right: 0.6rem;
+    color: var(--acento-hover);
+    transition: transform var(--transicion);
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+/* Cada habilidad se ve como una "chip" */
+details ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    list-style: none;
+    margin: 1.1rem 0 0;
+    padding: 0;
+}
+
+details li {
+    padding: 0.35rem 0.9rem;
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    background-color: var(--superficie-2);
+    font-size: 0.92rem;
+    transition: border-color var(--transicion), transform var(--transicion);
+}
+
+details li:hover {
+    border-color: var(--acento-2);
+    transform: translateY(-2px);
+}
+
+/* ===== Educación ===== */
+#edu ol {
+    counter-reset: paso;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#edu ol li {
+    counter-increment: paso;
+    position: relative;
+    margin-bottom: 1rem;
+    padding: 1rem 1.2rem 1rem 4rem;
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+}
+
+/* Número en círculo a la izquierda de cada ítem */
+#edu ol li::before {
+    content: counter(paso);
+    position: absolute;
+    left: 1.1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--acento), var(--acento-2));
+}
+
+#edu hr {
+    margin: 2rem 0;
+    border: none;
+    border-top: 1px solid var(--borde);
+}
+
+#edu ul {
+    margin: 0;
+    padding-left: 1.4rem;
+}
+
+#edu ul li {
+    margin-bottom: 0.6rem;
+}
+
+#edu ul li::marker {
+    color: var(--acento-2);
+}
+
+/* ===== Footer / Contacto ===== */
+footer {
+    margin-top: 2rem;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    background-color: var(--superficie);
+    border-top: 1px solid var(--borde);
+}
+
+footer p {
+    color: var(--texto-suave);
+}
+
+footer nav {
+    margin: 1.5rem 0;
+}
+
+/* ===== Animación de aparición al hacer scroll ===== */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Solo si el navegador la soporta y el usuario no pidió menos movimiento */
+@supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+        main section {
+            animation: aparecer linear both;
+            animation-timeline: view();
+            animation-range: entry 0% entry 35%;
+        }
+    }
+}
+
+/* ===== Accesibilidad ===== */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+    outline: 3px solid var(--acento-2);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
+    }
+}
+
+/* ===== Pantallas pequeñas ===== */
+@media (max-width: 600px) {
+    header {
+        padding-top: 2.5rem;
+    }
+
+    main {
+        padding: 1.5rem 1rem;
+    }
+
+    .proyectos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #edu ol li {
+        padding-left: 3.6rem;
+    }
+}
