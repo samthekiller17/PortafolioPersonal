@@ -1,165 +1,190 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Portafolio de Samuel Patiño, desarrollador de videojuegos con experiencia en Unity, VR/AR y desarrollo móvil.">
-    <title>Samuel Patiño | Game Developer</title>
+    <meta name="description" content="Portafolio de Samuel Patiño: Desarrollador de videojuegos, VR/AR y software. Conoce mis proyectos, habilidades y formación.">
+    <title>Samuel Patiño | Game & Software Developer</title>
     <link rel="stylesheet" href="CSS/styles.css">
 </head>
-
 <body>
-
     <header>
-        <h1>PORTAFOLIO</h1>
-        <img src="img/Yo2.webp" alt="FotoSamuel">
-        <h2>Samuel Andres Patiño Perez</h2>
-        <p>Hola soy samuel y este es mi portafolio, soy desarrollador de videojuegos y actualmente me encuentro
-            estudiando en Riwi.</p>
-        <p>Si quieres saber de riwi,<a href="https://riwi.io/">haz click aqui.</a></p><br>
-
-        <h2 class="sr-only">Menu</h2>
-        <nav>
-            <ul>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#sobremi">Sobre mi</a></li>
-                <li><a href="#habilidades">Habilidades tecnicas</a></li>
-                <li><a href="#edu">Educacion, Certificados y Logros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-
-            </ul>
-        </nav>
+        <div class="header-content">
+            <img src="img/Yo2.webp" alt="Foto de Samuel Patiño" class="profile-img">
+            <h1>PORTAFOLIO</h1>
+            <h2>Samuel Andrés Patiño Pérez</h2>
+            <p class="role-badge">🎮 Desarrollador de Videojuegos &bull; VR/AR &bull; Estudiante en Riwi</p>
+            <p class="bio-text">
+                Apasionado por la interactividad, la creación de experiencias inmersivas y el código limpio.
+                Actualmente fortaleciendo mis habilidades en desarrollo frontend y tecnologías web.
+            </p>
+            <div class="header-cta">
+                <a href="#contacto" class="btn-primary">Contáctame</a>
+                <a href="https://riwi.io/" target="_blank" rel="noopener noreferrer" class="btn-secondary">Conoce Riwi ↗</a>
+            </div>
+        </div>
     </header>
-    <hr>
+    <nav aria-label="Menú principal">
+        <ul>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#sobremi">Sobre mí</a></li>
+            <li><a href="#habilidades">Habilidades</a></li>
+            <li><a href="#edu">Educación</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
     <main>
+        <!-- PROYECTOS -->
         <section id="proyectos">
-            <h2>Proyectos</h2>
-            <p>En esta seccion te mostrare los proyectos que he hecho y los que estoy haciendo con riwi</p>
-
+            <h2>Proyectos Destacados</h2>
+            <p>Una selección de actividades y proyectos que he desarrollado tanto en Riwi como en el ámbito del desarrollo interactivo.</p>
             <div class="proyectos-grid">
-
-            <hr>
-
-
+                <!-- Proyecto 1 -->
                 <article class="proyecto-card">
-                    <img src="img/ParcheDevProyecto.jpg" alt="ParcheDev" width="620">
-                    <h3>Parche Dev 2026</h3>
-                    <p>Parche Dev es una comunidad de personas que aprenden y trabajan en desarrollo de software. (Este
-                        es una actividad en Riwi)</p>
-                    <p class="proyecto-lenguaje">Lenguaje: HTML</p>
-                    <button type="button"
-                        onclick="window.location.href='https://samthekiller17.github.io/Parche-devRiwi/index.html'">Ver
-                        proyecto</button>
+                    <div class="proyecto-img-wrap">
+                        <img src="img/ParcheDevProyecto.jpg" alt="Captura del proyecto Parche Dev 2026">
+                    </div>
+                    <div class="proyecto-body">
+                        <div class="proyecto-tags">
+                            <span class="proyecto-lenguaje">HTML5</span>
+                            <span class="proyecto-tipo">Comunidad</span>
+                        </div>
+                        <h3>Parche Dev 2026</h3>
+                        <p>Plataforma para una comunidad de aprendizaje y trabajo colaborativo en desarrollo de software, creada durante el proceso formativo en Riwi.</p>
+                        <a href="https://samthekiller17.github.io/Parche-devRiwi/index.html" target="_blank" rel="noopener noreferrer" class="btn-link">
+                            Ver proyecto en vivo ↗
+                        </a>
+                    </div>
                 </article>
-                <hr>
-
+                <!-- Proyecto 2 -->
                 <article class="proyecto-card">
-                    <img src="img/Portada - copia.jpg" alt="Rueda libre" width="620 px">
-                    <h3>Rueda libre</h3>
-                    <p>Actividad de Riwi para aprender/practicar html y css. (Este se encuentra en desarrollo)</p>
-                    <p class="proyecto-lenguaje">Lenguaje: HTML,CSS </p>
-                    <button type="button"
-                        onclick="window.location.href='https://samthekiller17.github.io/Rueda-Libre-Proyecto/'">Ver
-                        proyecto</button>
+                    <div class="proyecto-img-wrap">
+                        <img src="img/Portada - copia.jpg" alt="Captura del proyecto Rueda Libre">
+                    </div>
+                    <div class="proyecto-body">
+                        <div class="proyecto-tags">
+                            <span class="proyecto-lenguaje">HTML5 / CSS3</span>
+                            <span class="proyecto-tipo">En Desarrollo</span>
+                        </div>
+                        <h3>Rueda Libre</h3>
+                        <p>Sitio web enfocado en la práctica intensiva de maquetación semántica, estilos CSS avanzados y diseño web adaptativo.</p>
+                        <a href="https://samthekiller17.github.io/Rueda-Libre-Proyecto/" target="_blank" rel="noopener noreferrer" class="btn-link">
+                            Ver proyecto en vivo ↗
+                        </a>
+                    </div>
                 </article>
-
             </div>
         </section>
-        <hr>
+        <!-- SOBRE MÍ -->
         <section id="sobremi">
-
-            <h2>Sobre mi</h2>
-            <ul>
-                <li>Soy un desarrollador de videojuegos, egresado del CESDE; he hecho juegos de realidad virtual es una
-                    empresa llamada "NEUROAR", soy una persona alegre, me apasionan los videojuegos, soy competitivo en
-                    practicamente todo lo que hago por ejemplo en los estudios quiero ser de los primeros y resaltarme
-                    ante todos sanamente, en los videojuegos simpre quiero estar de los primeros.</li>
-                <li>He creado videojuegos en VR/AR, juegos mobiles y estoy en desarrollo de juegos personales.</li>
-            </ul>
+            <h2>Sobre mí</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <p>
+                        Soy desarrollador de videojuegos egresado del <strong>CESDE</strong> con experiencia en entornos inmersivos de realidad virtual (VR) y aumentada (AR) en <em>NEUROAR</em>.
+                    </p>
+                </div>
+                <div class="about-card">
+                    <p>
+                        Me caracterizo por ser una persona proactiva, analítica y apasionada por superar desafíos técnicos; busco constantemente la excelencia y destacar aportando soluciones sólidas.
+                    </p>
+                </div>
+                <div class="about-card">
+                    <p>
+                        He participado en el ciclo completo de videojuegos para dispositivos móviles y VR/AR, además de trabajar de forma continua en proyectos y prototipos personales.
+                    </p>
+                </div>
+            </div>
         </section>
-        <hr>
+        <!-- HABILIDADES -->
         <section id="habilidades">
-            <h2>Habilidades Tecnicas</h2>
-            <details>
-                <summary>Motores & Herramientas</summary>
+            <h2>Habilidades Técnicas</h2>
+            <details open>
+                <summary>Motores & Herramientas de Creación</summary>
                 <ul>
                     <li>Unity</li>
-                    <li>Git/Github</li>
-                    <li>Visual Studio</li>
-                    <li>Visual Studio code</li>
-                    <li>Blender</li>
-                    <li>Zbrush</li>
-                    <li>photoshop</li>
-                    <li>Adobe Premiere</li>
-                    <li>Ilustrator</li>
-                    <li>After Effects</li>
-                    <li>Substance</li>
                     <li>Unreal Engine</li>
+                    <li>Blender</li>
+                    <li>ZBrush</li>
+                    <li>Substance</li>
+                    <li>Git & GitHub</li>
+                    <li>Visual Studio</li>
+                    <li>VS Code</li>
+                    <li>Photoshop</li>
+                    <li>Illustrator</li>
+                    <li>After Effects</li>
+                    <li>Premiere Pro</li>
                 </ul>
             </details>
-            <details>
-                <summary>Lenguajes</summary>
+            <details open>
+                <summary>Lenguajes de Programación & Web</summary>
                 <ul>
                     <li>C#</li>
-                    <li>HTML/CSS/JS</li>
-                    <li>python</li>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                    <li>Python</li>
                 </ul>
             </details>
             <details>
-                <summary>Especialidades / Sistemas</summary>
+                <summary>Especialidades & Sistemas</summary>
                 <ul>
                     <li>Gameplay Programming</li>
-                    <li>UI Systems</li>
-                    <li>VR/AR</li>
-                    <li>Optimizacion (APP Bundles,Profiling)</li>
-                    <li>Fisicas</li>
-                    <li>Controllers</li>
+                    <li>UI / UX Systems</li>
+                    <li>VR / AR Development</li>
+                    <li>Optimización (App Bundles & Profiling)</li>
+                    <li>Físicas & Colisiones</li>
+                    <li>Controladores de Personaje</li>
                 </ul>
             </details>
         </section>
-        <hr>
+        <!-- EDUCACIÓN Y LOGROS -->
         <section id="edu">
-            <h2>Educacion, Certificaciones y Logros</h2>
-
-            <ol>
-                <li>Tecnico laboral como asistente en desarrollo de videojuegos | CESDE.</li>
-                <li>Desarrollo de videojuegos | Universidad de Antioquia.</li>
-                <li>Diseño grafico de videojuegos | Academy by Polygonus.</li>
-                <li>Tecnico laboral en habilidades en programacion (Enfasis en Apps Moviles) | MinTIC/Universidad Sergio
-                    Arboleda</li>
-                <li>Media tecnica en desarrollo de software | Pascual Bravo</li>
-            </ol>
-            <hr>
-            <ul>
-                <li>Introduccion a la programacion en python 1 | Courcera.</li>
-                <li>Desarrollo Frontend | Fundacion Rofé.</li>
+            <h2>Educación, Certificaciones y Logros</h2>
+            <ul class="timeline-list">
+                <li>
+                    <strong>Técnico Laboral en Desarrollo de Videojuegos</strong>
+                    <span>CESDE</span>
+                </li>
+                <li>
+                    <strong>Diplomado en Desarrollo de Videojuegos</strong>
+                    <span>Universidad de Antioquia</span>
+                </li>
+                <li>
+                    <strong>Diseño Gráfico para Videojuegos</strong>
+                    <span>Academy by Polygonus</span>
+                </li>
+                <li>
+                    <strong>Técnico Laboral en Programación con Énfasis en Móviles</strong>
+                    <span>MinTIC & Universidad Sergio Arboleda</span>
+                </li>
+                <li>
+                    <strong>Media Técnica en Desarrollo de Software</strong>
+                    <span>Institución Universitaria Pascual Bravo</span>
+                </li>
+                <li>
+                    <strong>Introducción a la Programación en Python</strong>
+                    <span>Coursera</span>
+                </li>
+                <li>
+                    <strong>Desarrollo Frontend</strong>
+                    <span>Fundación Rofé</span>
+                </li>
             </ul>
         </section>
-        <hr>
-
     </main>
-
+    <!-- FOOTER -->
     <footer id="contacto">
-        <h2>Contacto</h2>
-        <p>¿Quieres trabajar conmigo o tienes alguna pregunta? Escríbeme.</p>
-
-        <nav>
+        <h2>¿Conversamos?</h2>
+        <p>Siempre estoy abierto a nuevas oportunidades, proyectos interactivos o colaboraciones.</p>
+        <nav aria-label="Enlaces de contacto">
             <ul>
-                <li><a href="https://www.linkedin.com/in/samuel-pati%C3%B1o-a1163a173/" target="_blank"
-                        rel="noopener noreferrer">LinkedIn</a></li>
-                <li><a href="https://github.com/samthekiller17" target="_blank" rel="noopener noreferrer">GitHub</a>
-                </li>
-                <li><a href="mailto:samuelperez200417@gmail.com">Correo</a></li>
+                <li><a href="https://www.linkedin.com/in/samuel-pati%C3%B1o-a1163a173/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://github.com/samthekiller17" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="mailto:samuelperez200417@gmail.com">Enviar Correo</a></li>
             </ul>
         </nav>
-
-        <p>&copy; 2026 Samuel Andres Patiño Perez. Todos los derechos reservados.</p>
+        <p class="copyright">&copy; 2026 Samuel Andrés Patiño Pérez. Diseñado con pasión.</p>
     </footer>
-
-
-
 </body>
-
 </html>
