@@ -1,190 +1,531 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portafolio de Samuel Patiño: Desarrollador de videojuegos, VR/AR y software. Conoce mis proyectos, habilidades y formación.">
-    <title>Samuel Patiño | Game & Software Developer</title>
+    <meta name="description" content="Portafolio de Samuel Patiño: Desarrollador de videojuegos, VR/AR y software frontend. Descubre mis proyectos, habilidades técnicas y experiencia.">
+    <title>Samuel Patiño | Game Developer & Frontend Engineer</title>
+    
+    <!-- BOOTSTRAP ICONS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
     <link rel="stylesheet" href="CSS/styles.css">
 </head>
+
 <body>
-    <header>
+
+    <!-- BARRA DE PROGRESO DE SCROLL -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- BOTÓN TOGGLE MODO OSCURO -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar modo de color">
+        <i class="bi bi-moon-stars-fill theme-icon" id="themeIcon"></i>
+        <span class="theme-text" id="themeText">Modo Oscuro</span>
+    </button>
+
+    <!-- HEADER / HERO -->
+    <header class="reveal">
         <div class="header-content">
-            <img src="img/Yo2.webp" alt="Foto de Samuel Patiño" class="profile-img">
-            <h1>PORTAFOLIO</h1>
-            <h2>Samuel Andrés Patiño Pérez</h2>
-            <p class="role-badge">🎮 Desarrollador de Videojuegos &bull; VR/AR &bull; Estudiante en Riwi</p>
-            <p class="bio-text">
-                Apasionado por la interactividad, la creación de experiencias inmersivas y el código limpio.
-                Actualmente fortaleciendo mis habilidades en desarrollo frontend y tecnologías web.
-            </p>
-            <div class="header-cta">
-                <a href="#contacto" class="btn-primary">Contáctame</a>
-                <a href="https://riwi.io/" target="_blank" rel="noopener noreferrer" class="btn-secondary">Conoce Riwi ↗</a>
+            
+            <!-- AVATAR CENTRADO CON EFECTO SUAVE -->
+            <div class="avatar-wrapper">
+                <div class="avatar-glow"></div>
+                <img src="img/Yo2.webp" alt="Foto de Samuel Patiño" class="profile-img">
             </div>
+
+            <!-- BADGE DE ESTADO CENTRADO -->
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                <span>Disponible para proyectos & ofertas</span>
+            </div>
+
+            <h1>PORTAFOLIO</h1>
+            <h2 class="hero-name">Samuel Andrés Patiño Pérez</h2>
+            
+            <!-- EFECTO TYPEWRITER INTERACTIVO -->
+            <div class="role-badge-container">
+                <span class="role-badge">
+                    <i class="bi bi-terminal-fill"></i>
+                    <span id="typewriterText">Game Developer</span>
+                    <span class="cursor">|</span>
+                </span>
+            </div>
+            
+            <p class="bio-text">
+                Especializado en arquitectura de mecánicas interactivas, entornos inmersivos y diseño de interfaces web modernas y accesibles. Enfocado en código limpio, escalable y alto rendimiento.
+            </p>
+
+            <div class="header-cta">
+                <a href="#proyectos" class="btn-primary">
+                    Explorar Proyectos <i class="bi bi-arrow-down-short"></i>
+                </a>
+                <a href="#contacto" class="btn-secondary">
+                    <i class="bi bi-chat-dots-fill"></i> Contactar
+                </a>
+                <button class="btn-copy-mail" id="copyMailBtn" title="Copiar correo al portapapeles">
+                    <i class="bi bi-envelope-paper-fill"></i> <span id="copyMailText">Copiar Correo</span>
+                </button>
+            </div>
+
+            <!-- STATS EN FILA CENTRADOS -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">VR / AR</span>
+                    <span class="stat-label">Experiencia en NEUROAR</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">+15</span>
+                    <span class="stat-label">Herramientas & Lenguajes</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">Riwi</span>
+                    <span class="stat-label">Formación Intensiva</span>
+                </div>
+            </div>
+
         </div>
     </header>
-    <nav aria-label="Menú principal">
+
+    <!-- MENÚ FLOTANTE GLASSMORPHISM -->
+    <nav aria-label="Menú principal" id="mainNav">
         <ul>
-            <li><a href="#proyectos">Proyectos</a></li>
-            <li><a href="#sobremi">Sobre mí</a></li>
-            <li><a href="#habilidades">Habilidades</a></li>
-            <li><a href="#edu">Educación</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#proyectos" class="nav-link active">Proyectos</a></li>
+            <li><a href="#sobremi" class="nav-link">Sobre mí</a></li>
+            <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
+            <li><a href="#edu" class="nav-link">Trayectoria</a></li>
+            <li><a href="#contacto" class="nav-link">Contacto</a></li>
         </ul>
     </nav>
+
     <main>
-        <!-- PROYECTOS -->
-        <section id="proyectos">
-            <h2>Proyectos Destacados</h2>
-            <p>Una selección de actividades y proyectos que he desarrollado tanto en Riwi como en el ámbito del desarrollo interactivo.</p>
-            <div class="proyectos-grid">
-                <!-- Proyecto 1 -->
-                <article class="proyecto-card">
+        <!-- SECCIÓN: PROYECTOS CON FILTRO INTERACTIVO -->
+        <section id="proyectos" class="portfolio-section reveal">
+            <div class="section-title-wrap">
+                <h2>Proyectos Destacados</h2>
+                <p>Aplicaciones web y experiencias interactivas desarrolladas con altos estándares de usabilidad y código semántico.</p>
+            </div>
+
+            <!-- BOTONES DE FILTRO -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="web">Web & Frontend</button>
+                <button class="filter-btn" data-filter="riwi">Actividades Riwi</button>
+            </div>
+
+            <div class="proyectos-grid" id="projectsGrid">
+                <!-- PROYECTO 1 -->
+                <article class="proyecto-card" data-category="web riwi">
                     <div class="proyecto-img-wrap">
-                        <img src="img/ParcheDevProyecto.jpg" alt="Captura del proyecto Parche Dev 2026">
+                        <img src="img/ParcheDevProyecto.jpg" alt="Captura de pantalla de Parche Dev 2026">
+                        <span class="card-status-pill">Riwi Track</span>
+                    </div>
+                    <div class="proyecto-body">
+                        <div class="proyecto-tags">
+                            <span class="proyecto-lenguaje">HTML5 Semántico</span>
+                            <span class="proyecto-lenguaje">CSS3 Moderno</span>
+                        </div>
+                        <h3>Parche Dev 2026</h3>
+                        <p>Plataforma comunitaria creada para desarrolladores de software. Enfocada en accesibilidad, estructura semántica limpia y despliegue continuo en GitHub Pages.</p>
+                        <div class="card-actions">
+                            <a href="https://samthekiller17.github.io/Parche-devRiwi/index.html" target="_blank" rel="noopener noreferrer" class="btn-link">
+                                Ver Demo en Vivo <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
+                            <a href="https://github.com/samthekiller17/Parche-devRiwi" target="_blank" rel="noopener noreferrer" class="btn-outline">
+                                <i class="bi bi-github"></i> Código
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PROYECTO 2 -->
+                <article class="proyecto-card" data-category="web riwi">
+                    <div class="proyecto-img-wrap">
+                        <img src="img/Portada - copia.jpg" alt="Captura de pantalla de Rueda Libre">
+                        <span class="card-status-pill in-progress">En Desarrollo</span>
                     </div>
                     <div class="proyecto-body">
                         <div class="proyecto-tags">
                             <span class="proyecto-lenguaje">HTML5</span>
-                            <span class="proyecto-tipo">Comunidad</span>
-                        </div>
-                        <h3>Parche Dev 2026</h3>
-                        <p>Plataforma para una comunidad de aprendizaje y trabajo colaborativo en desarrollo de software, creada durante el proceso formativo en Riwi.</p>
-                        <a href="https://samthekiller17.github.io/Parche-devRiwi/index.html" target="_blank" rel="noopener noreferrer" class="btn-link">
-                            Ver proyecto en vivo ↗
-                        </a>
-                    </div>
-                </article>
-                <!-- Proyecto 2 -->
-                <article class="proyecto-card">
-                    <div class="proyecto-img-wrap">
-                        <img src="img/Portada - copia.jpg" alt="Captura del proyecto Rueda Libre">
-                    </div>
-                    <div class="proyecto-body">
-                        <div class="proyecto-tags">
-                            <span class="proyecto-lenguaje">HTML5 / CSS3</span>
-                            <span class="proyecto-tipo">En Desarrollo</span>
+                            <span class="proyecto-lenguaje">CSS Flex & Grid</span>
+                            <span class="proyecto-lenguaje">Responsive</span>
                         </div>
                         <h3>Rueda Libre</h3>
-                        <p>Sitio web enfocado en la práctica intensiva de maquetación semántica, estilos CSS avanzados y diseño web adaptativo.</p>
-                        <a href="https://samthekiller17.github.io/Rueda-Libre-Proyecto/" target="_blank" rel="noopener noreferrer" class="btn-link">
-                            Ver proyecto en vivo ↗
-                        </a>
+                        <p>Proyecto orientado al diseño responsivo de alto impacto visual y optimización estética para dispositivos móviles y de escritorio.</p>
+                        <div class="card-actions">
+                            <a href="https://samthekiller17.github.io/Rueda-Libre-Proyecto/" target="_blank" rel="noopener noreferrer" class="btn-link">
+                                Ver Demo en Vivo <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
+                            <a href="https://github.com/samthekiller17/Rueda-Libre-Proyecto" target="_blank" rel="noopener noreferrer" class="btn-outline">
+                                <i class="bi bi-github"></i> Código
+                            </a>
+                        </div>
                     </div>
                 </article>
             </div>
         </section>
-        <!-- SOBRE MÍ -->
-        <section id="sobremi">
-            <h2>Sobre mí</h2>
+
+        <!-- SECCIÓN: SOBRE MÍ -->
+        <section id="sobremi" class="portfolio-section reveal">
+            <div class="section-title-wrap">
+                <h2>Sobre Mí</h2>
+            </div>
             <div class="about-grid">
                 <div class="about-card">
-                    <p>
-                        Soy desarrollador de videojuegos egresado del <strong>CESDE</strong> con experiencia en entornos inmersivos de realidad virtual (VR) y aumentada (AR) en <em>NEUROAR</em>.
-                    </p>
+                    <div class="about-icon"><i class="bi bi-joystick"></i></div>
+                    <h3>Game Development & Inmersión</h3>
+                    <p>Egresado del <strong>CESDE</strong>. Creé prototipos y simulaciones interactivas de Realidad Virtual (VR) y Aumentada (AR) en <em>NEUROAR</em>, resolviendo mecánicas de juego en tiempo real.</p>
                 </div>
                 <div class="about-card">
-                    <p>
-                        Me caracterizo por ser una persona proactiva, analítica y apasionada por superar desafíos técnicos; busco constantemente la excelencia y destacar aportando soluciones sólidas.
-                    </p>
+                    <div class="about-icon"><i class="bi bi-lightning-charge-fill"></i></div>
+                    <h3>Mentalidad de Crecimiento</h3>
+                    <p>Me motiva la sana competencia y la excelencia técnica. Me comprometo al 100% en cada desafío para entregar resultados que superen las expectativas de rendimiento.</p>
                 </div>
                 <div class="about-card">
-                    <p>
-                        He participado en el ciclo completo de videojuegos para dispositivos móviles y VR/AR, además de trabajar de forma continua en proyectos y prototipos personales.
-                    </p>
+                    <div class="about-icon"><i class="bi bi-laptop"></i></div>
+                    <h3>Frontend & Full-Stack en Riwi</h3>
+                    <p>Integrando principios de ingeniería de software moderna, control de versiones, diseño de UI reactivo y arquitecturas web ágiles.</p>
                 </div>
             </div>
         </section>
-        <!-- HABILIDADES -->
-        <section id="habilidades">
-            <h2>Habilidades Técnicas</h2>
-            <details open>
-                <summary>Motores & Herramientas de Creación</summary>
-                <ul>
-                    <li>Unity</li>
-                    <li>Unreal Engine</li>
-                    <li>Blender</li>
-                    <li>ZBrush</li>
-                    <li>Substance</li>
-                    <li>Git & GitHub</li>
-                    <li>Visual Studio</li>
-                    <li>VS Code</li>
-                    <li>Photoshop</li>
-                    <li>Illustrator</li>
-                    <li>After Effects</li>
-                    <li>Premiere Pro</li>
-                </ul>
-            </details>
-            <details open>
-                <summary>Lenguajes de Programación & Web</summary>
-                <ul>
-                    <li>C#</li>
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li>JavaScript</li>
-                    <li>Python</li>
-                </ul>
-            </details>
-            <details>
-                <summary>Especialidades & Sistemas</summary>
-                <ul>
-                    <li>Gameplay Programming</li>
-                    <li>UI / UX Systems</li>
-                    <li>VR / AR Development</li>
-                    <li>Optimización (App Bundles & Profiling)</li>
-                    <li>Físicas & Colisiones</li>
-                    <li>Controladores de Personaje</li>
-                </ul>
-            </details>
+
+        <!-- SECCIÓN: HABILIDADES TÉCNICAS -->
+        <section id="habilidades" class="portfolio-section reveal">
+            <div class="section-title-wrap">
+                <h2>Habilidades Técnicas</h2>
+                <p>Haz clic en cada categoría para expandir o colapsar el inventario de tecnologías.</p>
+            </div>
+
+            <div class="skills-container">
+                <details open>
+                    <summary>
+                        <span class="summary-title">
+                            <i class="bi bi-unity"></i> Motores de Juego & Herramientas 3D/2D
+                        </span>
+                        <span class="summary-count">12 herramientas</span>
+                    </summary>
+                    <ul>
+                        <li>Unity Engine</li>
+                        <li>Unreal Engine</li>
+                        <li>Blender 3D</li>
+                        <li>ZBrush</li>
+                        <li>Substance Painter</li>
+                        <li>Git & GitHub</li>
+                        <li>Visual Studio</li>
+                        <li>Visual Studio Code</li>
+                        <li>Adobe Photoshop</li>
+                        <li>Adobe Illustrator</li>
+                        <li>Adobe After Effects</li>
+                        <li>Adobe Premiere Pro</li>
+                    </ul>
+                </details>
+
+                <details open>
+                    <summary>
+                        <span class="summary-title">
+                            <i class="bi bi-code-slash"></i> Lenguajes de Programación & Web
+                        </span>
+                        <span class="summary-count">5 lenguajes</span>
+                    </summary>
+                    <ul>
+                        <li>C# (.NET)</li>
+                        <li>HTML5 Semántico</li>
+                        <li>CSS3 Avanzado</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>Python</li>
+                    </ul>
+                </details>
+
+                <details>
+                    <summary>
+                        <span class="summary-title">
+                            <i class="bi bi-gear-wide-connected"></i> Sistemas & Especialidades
+                        </span>
+                        <span class="summary-count">6 áreas</span>
+                    </summary>
+                    <ul>
+                        <li>Gameplay Programming</li>
+                        <li>UI / UX Architecture</li>
+                        <li>VR / AR Systems</li>
+                        <li>Optimización de Rendimiento & Profiling</li>
+                        <li>Físicas y Simulaciones</li>
+                        <li>Controladores de Entrada (Input Systems)</li>
+                    </ul>
+                </details>
+            </div>
         </section>
-        <!-- EDUCACIÓN Y LOGROS -->
-        <section id="edu">
-            <h2>Educación, Certificaciones y Logros</h2>
-            <ul class="timeline-list">
-                <li>
-                    <strong>Técnico Laboral en Desarrollo de Videojuegos</strong>
-                    <span>CESDE</span>
-                </li>
-                <li>
-                    <strong>Diplomado en Desarrollo de Videojuegos</strong>
-                    <span>Universidad de Antioquia</span>
-                </li>
-                <li>
-                    <strong>Diseño Gráfico para Videojuegos</strong>
-                    <span>Academy by Polygonus</span>
-                </li>
-                <li>
-                    <strong>Técnico Laboral en Programación con Énfasis en Móviles</strong>
-                    <span>MinTIC & Universidad Sergio Arboleda</span>
-                </li>
-                <li>
-                    <strong>Media Técnica en Desarrollo de Software</strong>
-                    <span>Institución Universitaria Pascual Bravo</span>
-                </li>
-                <li>
-                    <strong>Introducción a la Programación en Python</strong>
-                    <span>Coursera</span>
-                </li>
-                <li>
-                    <strong>Desarrollo Frontend</strong>
-                    <span>Fundación Rofé</span>
-                </li>
-            </ul>
+
+        <!-- SECCIÓN: EDUCACIÓN -->
+        <section id="edu" class="portfolio-section reveal">
+            <div class="section-title-wrap">
+                <h2>Trayectoria & Educación</h2>
+                <p>Ruta formativa continua en desarrollo de software, videojuegos y frontend.</p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <strong>Técnico Laboral como Asistente en Desarrollo de Videojuegos</strong>
+                        <span class="institution">CESDE</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <strong>Desarrollo de Videojuegos</strong>
+                        <span class="institution">Universidad de Antioquia</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <strong>Diseño Gráfico de Videojuegos</strong>
+                        <span class="institution">Academy by Polygonus</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <strong>Habilidades en Programación (Énfasis en Apps Móviles)</strong>
+                        <span class="institution">MinTIC & Universidad Sergio Arboleda</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <strong>Media Técnica en Desarrollo de Software</strong>
+                        <span class="institution">Institución Universitaria Pascual Bravo</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <strong>Introducción a la Programación en Python</strong>
+                        <span class="institution">Coursera</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <strong>Desarrollo Frontend</strong>
+                        <span class="institution">Fundación Rofé</span>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
-    <!-- FOOTER -->
-    <footer id="contacto">
-        <h2>¿Conversamos?</h2>
-        <p>Siempre estoy abierto a nuevas oportunidades, proyectos interactivos o colaboraciones.</p>
-        <nav aria-label="Enlaces de contacto">
+
+    <!-- FOOTER / CONTACTO -->
+    <footer id="contacto" class="portfolio-section reveal">
+        <h2>¿Tienes un proyecto en mente?</h2>
+        <p>Hablemos sobre videojuegos, soluciones interactivas o vacantes de desarrollo web.</p>
+
+        <!-- FORMULARIO DIRECTO RÁPIDO -->
+        <form class="contact-box" action="mailto:samuelperez200417@gmail.com" method="POST" enctype="text/plain">
+            <input type="text" name="nombre" placeholder="Tu Nombre o Empresa" required>
+            <input type="email" name="correo" placeholder="Tu Correo Electrónico" required>
+            <textarea name="mensaje" rows="3" placeholder="¿En qué puedo ayudarte?" required></textarea>
+            <button type="submit" class="btn-primary">
+                Enviar Mensaje <i class="bi bi-send-fill"></i>
+            </button>
+        </form>
+
+        <nav aria-label="Enlaces sociales del footer">
             <ul>
-                <li><a href="https://www.linkedin.com/in/samuel-pati%C3%B1o-a1163a173/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                <li><a href="https://github.com/samthekiller17" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                <li><a href="mailto:samuelperez200417@gmail.com">Enviar Correo</a></li>
+                <li>
+                    <a href="https://www.linkedin.com/in/samuel-pati%C3%B1o-a1163a173/" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-linkedin"></i> LinkedIn
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/samthekiller17" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:samuelperez200417@gmail.com">
+                        <i class="bi bi-envelope-fill"></i> Correo Directo
+                    </a>
+                </li>
             </ul>
         </nav>
-        <p class="copyright">&copy; 2026 Samuel Andrés Patiño Pérez. Diseñado con pasión.</p>
+
+        <p class="copyright">&copy; 2026 Samuel Andrés Patiño Pérez &bull; Diseñado con dedicación y código limpio.</p>
     </footer>
+
+    <!-- BOTÓN VOLVER ARRIBA -->
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- SCRIPT DE INTERACTIVIDAD COMPLETA -->
+    <script>
+        // 1. Barra de progreso de scroll y botón volver arriba
+        const scrollProgress = document.getElementById('scrollProgress');
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            if (scrollProgress) scrollProgress.style.width = scrolled + '%';
+
+            if (winScroll > 350) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // 2. Resaltar sección activa en el menú
+        const sections = document.querySelectorAll('.portfolio-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 140;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // 3. Modo Oscuro con LocalStorage y Bootstrap Icons
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+
+        function setTheme(isDark) {
+            if (isDark) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'bi bi-brightness-high-fill theme-icon';
+                themeText.textContent = 'Modo Claro';
+                localStorage.setItem('portfolio-theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                themeIcon.className = 'bi bi-moon-stars-fill theme-icon';
+                themeText.textContent = 'Modo Oscuro';
+                localStorage.setItem('portfolio-theme', 'light');
+            }
+        }
+
+        const savedTheme = localStorage.getItem('portfolio-theme');
+        if (savedTheme === 'dark') {
+            setTheme(true);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isCurrentDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            setTheme(!isCurrentDark);
+        });
+
+        // 4. Copiar correo al portapapeles con feedback instantáneo
+        const copyMailBtn = document.getElementById('copyMailBtn');
+        const copyMailText = document.getElementById('copyMailText');
+        const emailToCopy = 'samuelperez200417@gmail.com';
+
+        copyMailBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(emailToCopy).then(() => {
+                const originalHtml = copyMailBtn.innerHTML;
+                copyMailBtn.innerHTML = '<i class="bi bi-check-circle-fill"></i> ¡Copiado!';
+                copyMailBtn.style.background = '#22c55e';
+                copyMailBtn.style.color = '#ffffff';
+                copyMailBtn.style.borderColor = '#22c55e';
+
+                setTimeout(() => {
+                    copyMailBtn.innerHTML = originalHtml;
+                    copyMailBtn.removeAttribute('style');
+                }, 2200);
+            });
+        });
+
+        // 5. Filtros de proyectos interactivos
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.proyecto-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    const cardCategories = card.getAttribute('data-category');
+                    if (filterValue === 'all' || cardCategories.includes(filterValue)) {
+                        card.style.display = 'flex';
+                        card.style.animation = 'fadeInUp 0.4s ease forwards';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 6. Efecto Typewriter dinámico
+        const words = ['Game Developer 🎮', 'VR / AR Specialist 👓', 'Frontend Developer @ Riwi 💻', 'Gameplay Programmer ⚡'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterEl = document.getElementById('typewriterText');
+
+        function type() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typewriterEl.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterEl.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 45 : 90;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 1600; // Pausa al terminar la palabra
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 400; // Pausa antes de la siguiente palabra
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', type);
+
+        // 7. Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+
 </body>
 </html>
